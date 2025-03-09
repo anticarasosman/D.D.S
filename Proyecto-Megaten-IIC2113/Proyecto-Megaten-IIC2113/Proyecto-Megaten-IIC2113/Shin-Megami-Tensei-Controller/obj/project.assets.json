@@ -1,0 +1,95 @@
+{
+  "version": 3,
+  "targets": {
+    "net9.0": {
+      "Shin-Megami-Tensei-View/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v9.0",
+        "compile": {
+          "bin/placeholder/Shin-Megami-Tensei-View.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Shin-Megami-Tensei-View.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "Shin-Megami-Tensei-View/1.0.0": {
+      "type": "project",
+      "path": "../Shin-Megami-Tensei-View/Shin-Megami-Tensei-View.csproj",
+      "msbuildProject": "../Shin-Megami-Tensei-View/Shin-Megami-Tensei-View.csproj"
+    }
+  },
+  "projectFileDependencyGroups": {
+    "net9.0": [
+      "Shin-Megami-Tensei-View >= 1.0.0"
+    ]
+  },
+  "packageFolders": {
+    "C:\\Users\\colas\\.nuget\\packages\\": {}
+  },
+  "project": {
+    "version": "1.0.0",
+    "restore": {
+      "projectUniqueName": "C:\\Users\\colas\\Downloads\\Proyecto-Megaten-IIC2113\\Proyecto-Megaten-IIC2113\\Shin-Megami-Tensei-Controller\\Shin-Megami-Tensei-Controller.csproj",
+      "projectName": "Shin-Megami-Tensei-Controller",
+      "projectPath": "C:\\Users\\colas\\Downloads\\Proyecto-Megaten-IIC2113\\Proyecto-Megaten-IIC2113\\Shin-Megami-Tensei-Controller\\Shin-Megami-Tensei-Controller.csproj",
+      "packagesPath": "C:\\Users\\colas\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\colas\\Downloads\\Proyecto-Megaten-IIC2113\\Proyecto-Megaten-IIC2113\\Shin-Megami-Tensei-Controller\\obj\\",
+      "projectStyle": "PackageReference",
+      "UsingMicrosoftNETSdk": false,
+      "configFilePaths": [
+        "C:\\Users\\colas\\AppData\\Roaming\\NuGet\\NuGet.Config"
+      ],
+      "originalTargetFrameworks": [
+        "net9.0"
+      ],
+      "sources": {
+        "https://api.nuget.org/v3/index.json": {}
+      },
+      "frameworks": {
+        "net9.0": {
+          "targetAlias": "net9.0",
+          "projectReferences": {
+            "C:\\Users\\colas\\Downloads\\Proyecto-Megaten-IIC2113\\Proyecto-Megaten-IIC2113\\Shin-Megami-Tensei-View\\Shin-Megami-Tensei-View.csproj": {
+              "projectPath": "C:\\Users\\colas\\Downloads\\Proyecto-Megaten-IIC2113\\Proyecto-Megaten-IIC2113\\Shin-Megami-Tensei-View\\Shin-Megami-Tensei-View.csproj"
+            }
+          }
+        }
+      },
+      "warningProperties": {
+        "warnAsError": [
+          "NU1605"
+        ]
+      },
+      "restoreAuditProperties": {
+        "enableAudit": "true",
+        "auditLevel": "low",
+        "auditMode": "direct"
+      }
+    },
+    "frameworks": {
+      "net9.0": {
+        "targetAlias": "net9.0",
+        "imports": [
+          "net461",
+          "net462",
+          "net47",
+          "net471",
+          "net472",
+          "net48",
+          "net481"
+        ],
+        "assetTargetFallback": true,
+        "warn": true,
+        "frameworkReferences": {
+          "Microsoft.NETCore.App": {
+            "privateAssets": "all"
+          }
+        },
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.101/PortableRuntimeIdentifierGraph.json"
+      }
+    }
+  }
+}
