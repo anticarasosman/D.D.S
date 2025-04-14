@@ -1,0 +1,15 @@
+C:\Users\Guill\D.D.S\Proyecto-Megaten-IIC2113-E2\Proyecto-Megaten-IIC2113\Shin-Megami-Tensei-Model\bin\Debug\net8.0\Shin-Megami-Tensei-Model.exe
+C:\Users\Guill\D.D.S\Proyecto-Megaten-IIC2113-E2\Proyecto-Megaten-IIC2113\Shin-Megami-Tensei-Model\bin\Debug\net8.0\Shin-Megami-Tensei-Model.deps.json
+C:\Users\Guill\D.D.S\Proyecto-Megaten-IIC2113-E2\Proyecto-Megaten-IIC2113\Shin-Megami-Tensei-Model\bin\Debug\net8.0\Shin-Megami-Tensei-Model.runtimeconfig.json
+C:\Users\Guill\D.D.S\Proyecto-Megaten-IIC2113-E2\Proyecto-Megaten-IIC2113\Shin-Megami-Tensei-Model\bin\Debug\net8.0\Shin-Megami-Tensei-Model.dll
+C:\Users\Guill\D.D.S\Proyecto-Megaten-IIC2113-E2\Proyecto-Megaten-IIC2113\Shin-Megami-Tensei-Model\bin\Debug\net8.0\Shin-Megami-Tensei-Model.pdb
+C:\Users\Guill\D.D.S\Proyecto-Megaten-IIC2113-E2\Proyecto-Megaten-IIC2113\Shin-Megami-Tensei-Model\obj\Debug\net8.0\Shin-Megami-Tensei-Model.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Guill\D.D.S\Proyecto-Megaten-IIC2113-E2\Proyecto-Megaten-IIC2113\Shin-Megami-Tensei-Model\obj\Debug\net8.0\Shin-Megami-Tensei-Model.AssemblyInfoInputs.cache
+C:\Users\Guill\D.D.S\Proyecto-Megaten-IIC2113-E2\Proyecto-Megaten-IIC2113\Shin-Megami-Tensei-Model\obj\Debug\net8.0\Shin-Megami-Tensei-Model.AssemblyInfo.cs
+C:\Users\Guill\D.D.S\Proyecto-Megaten-IIC2113-E2\Proyecto-Megaten-IIC2113\Shin-Megami-Tensei-Model\obj\Debug\net8.0\Shin-Megami-Tensei-Model.csproj.CoreCompileInputs.cache
+C:\Users\Guill\D.D.S\Proyecto-Megaten-IIC2113-E2\Proyecto-Megaten-IIC2113\Shin-Megami-Tensei-Model\obj\Debug\net8.0\Shin-Megami-Tensei-Model.sourcelink.json
+C:\Users\Guill\D.D.S\Proyecto-Megaten-IIC2113-E2\Proyecto-Megaten-IIC2113\Shin-Megami-Tensei-Model\obj\Debug\net8.0\Shin-Megami-Tensei-Model.dll
+C:\Users\Guill\D.D.S\Proyecto-Megaten-IIC2113-E2\Proyecto-Megaten-IIC2113\Shin-Megami-Tensei-Model\obj\Debug\net8.0\refint\Shin-Megami-Tensei-Model.dll
+C:\Users\Guill\D.D.S\Proyecto-Megaten-IIC2113-E2\Proyecto-Megaten-IIC2113\Shin-Megami-Tensei-Model\obj\Debug\net8.0\Shin-Megami-Tensei-Model.pdb
+C:\Users\Guill\D.D.S\Proyecto-Megaten-IIC2113-E2\Proyecto-Megaten-IIC2113\Shin-Megami-Tensei-Model\obj\Debug\net8.0\Shin-Megami-Tensei-Model.genruntimeconfig.cache
+C:\Users\Guill\D.D.S\Proyecto-Megaten-IIC2113-E2\Proyecto-Megaten-IIC2113\Shin-Megami-Tensei-Model\obj\Debug\net8.0\ref\Shin-Megami-Tensei-Model.dll
