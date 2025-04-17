@@ -22,14 +22,15 @@ public class TurnBehaviour
     {
         int iterations = 0;
         List<Unit> unitsBySpeed = OrderBySpd(turn.team);
-        while (turn.fullTurns > 0)
+        while (turn.FullTurns > 0 || turn.BlinkingTurns > 0)
         {
             List<Unit> activeUnits = ChooseActiveUnits(unitsBySpeed);
             List<Unit> possibleTargets = ChoosePossibleTargets(opposingTeam);
             gameView.ShowGameState(gameBoard);
-            gameView.ShowCurrentTurns(turn.fullTurns, turn.blinkingTurns);
+            gameView.ShowCurrentTurns(turn.FullTurns, turn.BlinkingTurns);
             gameView.ShowCurrentOrder(activeUnits, iterations);
-            ChooseActions(activeUnits[iterations], possibleTargets, turn);
+            int numberOfActiveUnits = activeUnits.Count;
+            ChooseActions(activeUnits[iterations%numberOfActiveUnits], possibleTargets, turn);
             iterations++;
             bool someoneWon = CheckForWinner(turn, opposingTeam);
             if (someoneWon) {break;}
@@ -69,7 +70,7 @@ public class TurnBehaviour
     private void ChooseActions(Unit unit, List<Unit> possibleTargets, PlayerTurn turn)
     {
         int userOption;
-        if (unit.isSamurai){userOption = gameView.ChooseSamuraiActions(unit);}
+        if (unit.isSamurai) { userOption = gameView.ChooseSamuraiActions(unit); }
         else{userOption = gameView.ChooseMonsterActions(unit);}
         UserOptions option = ParseUserInputIntoAction(userOption, unit.isSamurai);
         Action chosenAction = ActionFactory.CreateAction(unit, possibleTargets, actionView, option, turn);

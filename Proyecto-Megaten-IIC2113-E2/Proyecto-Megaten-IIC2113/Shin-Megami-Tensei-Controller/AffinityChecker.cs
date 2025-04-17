@@ -20,7 +20,7 @@ public class AffinityChecker
         if (affinity == "Wk"){return 1.5;}
         if (affinity == "Rs"){return 0.5;}
         if (affinity == "Nu"){return 0;}
-        if (affinity == "Rp"){return 0;}
+        if (affinity == "Rp"){return 1;}
         if (affinity == "Dr"){return -1;}
         return 1;
     }

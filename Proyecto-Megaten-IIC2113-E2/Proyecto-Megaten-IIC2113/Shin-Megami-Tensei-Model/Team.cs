@@ -5,6 +5,7 @@ public class Team
     public Unit samurai;
     public Unit[] monsters;
     public int playerNumber;
+    public int skillsUsed;
     public bool Defeated;
 
     public Team(Unit samurai, Unit[] monsters, int playerNumber)

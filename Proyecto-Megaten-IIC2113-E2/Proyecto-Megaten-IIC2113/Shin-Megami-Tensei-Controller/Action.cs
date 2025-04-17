@@ -23,9 +23,8 @@ namespace Shin_Megami_Tensei
         public int Damage(Unit actingUnit, Unit target, string targetsAffinity, double damage)
         {
             double damageMultiplier = AffinityChecker.CheckDamageMultiplier(targetsAffinity);
-            Console.WriteLine($"EL MULTIPLICADOR DE DAÑO ES {damageMultiplier}");
-            int finalDamage = (int)(damageMultiplier * damage);
-            if (targetsAffinity == "Repel"){actingUnit.stats.CurrentHp -= finalDamage;}
+            int finalDamage = Convert.ToInt32(Math.Floor(damageMultiplier * damage));
+            if (targetsAffinity == "Rp"){actingUnit.stats.CurrentHp -= finalDamage;}
             else{target.stats.CurrentHp -= finalDamage;}
             if (target.stats.CurrentHp < 0){target.stats.CurrentHp = 0; target.isSummoned = false;}
             return finalDamage;
@@ -39,7 +38,7 @@ namespace Shin_Megami_Tensei
             int targetPosition = actionView.ChooseTarget(actingUnit, possibleTargets)-1;
             if (targetPosition >= possibleTargets.Count){return false;}
             string targetsAffinity = AffinityChecker.CheckAffinity("Phys", possibleTargets[targetPosition]);
-            int modifier = (int)Math.Floor(actingUnit.stats.Str * 54 * 0.0114);
+            double modifier = actingUnit.stats.Str * 54 * 0.0114;
             int damage = Damage(actingUnit, possibleTargets[targetPosition], targetsAffinity, modifier);
             ActionView.AttackEffectMessage(actingUnit, possibleTargets[targetPosition], targetsAffinity, damage);
             TurnsManager.ConsumeTurns(targetsAffinity);
@@ -53,8 +52,8 @@ namespace Shin_Megami_Tensei
         {
             int targetPosition = actionView.ChooseTarget(actingUnit, possibleTargets)-1;
             if (targetPosition >= possibleTargets.Count){return false;}
-            string targetsAffinity = AffinityChecker.CheckAffinity("Skl", possibleTargets[targetPosition]);
-            int modifier = (int)Math.Floor(actingUnit.stats.Skl * 80 * 0.0114);
+            string targetsAffinity = AffinityChecker.CheckAffinity("Gun", possibleTargets[targetPosition]);
+            double modifier = actingUnit.stats.Skl * 80 * 0.0114;
             int damage = Damage(actingUnit, possibleTargets[targetPosition], targetsAffinity, modifier);
             ActionView.ShootEffectMessage(actingUnit, possibleTargets[targetPosition], targetsAffinity, damage);
             TurnsManager.ConsumeTurns(targetsAffinity);
@@ -77,15 +76,21 @@ namespace Shin_Megami_Tensei
                 int targetPosition = actionView.ChooseTarget(actingUnit, possibleTargets)-1;
                 if (targetPosition > possibleTargets.Count){return false;}
                 string targetsAffinity = AffinityChecker.CheckAffinity(skill.type, possibleTargets[targetPosition]);
-                //ACAAAAA, NOS QUEDAMOS ACAAAAAA, HAY QUE PREGUNTARLE AL PROFE COMO CALCULAR BIEN EL DAÑO
-                double modifier = Math.Sqrt(actingUnit.stats.Mag * skill.power);
-                Console.WriteLine($"VAMOS A INFLINGIR {modifier} DE DAÑO");
+                double modifier = CalculateSkillDmg(actingUnit, skill.type, skill.power);
                 int damage = Damage(actingUnit, possibleTargets[targetPosition], targetsAffinity, modifier);
-                ActionView.SkillEffectMessage(actingUnit, possibleTargets[targetPosition], targetsAffinity, damage, skill);
+                ActionView.SkillEffectMessage(actingUnit, possibleTargets[targetPosition], targetsAffinity, damage, skill, turn.team.skillsUsed);
                 TurnsManager.ConsumeTurns(targetsAffinity);
+                actingUnit.stats.CurrentMp -= skill.cost;
                 return true;
             }
+            turn.team.skillsUsed += 1;
             return true;
+        }
+        private double CalculateSkillDmg(Unit actingUnit, string damageType, int skillPower)
+        {
+            if (damageType == "Phys") {return Math.Sqrt(actingUnit.stats.Str * skillPower);}
+            if (damageType == "Gun") {return Math.Sqrt(actingUnit.stats.Skl * skillPower);}
+            return Math.Sqrt(actingUnit.stats.Mag * skillPower);
         }
         private void DetermineHealingEffect(Unit actingUnit, PlayerTurn turn, Skills skill, ActionView actionView)
         {

@@ -17,7 +17,7 @@ public class TurnsManager
         int blinkingTurnsChange = 0;
         if (affinity == "-" || affinity == "Rs")
         {
-            if (turn.blinkingTurns <= 0)
+            if (turn.BlinkingTurns > 0)
             {
                 blinkingTurnsChange = -1;
                 actionView.TurnsConsumedMessage(0, 1, 0);
@@ -30,25 +30,67 @@ public class TurnsManager
         }
         else if (affinity == "Wk")
         {
-            fullTurnsChange = -1; blinkingTurnsChange = 1;
-            actionView.TurnsConsumedMessage(1, 0, 1);
+            blinkingTurnsChange = 1;
+            if (turn.FullTurns > 0)
+            {
+                fullTurnsChange = -1;
+                actionView.TurnsConsumedMessage(1, 0, 1);
+            }
+            else
+            {
+                blinkingTurnsChange = -1;
+                actionView.TurnsConsumedMessage(0, 1, 0);
+            }
         }
         else if (affinity == "Nu")
         {
-            fullTurnsChange = -2; blinkingTurnsChange = -2;
-            actionView.TurnsConsumedMessage(2, 2, 0);
+            Console.WriteLine("ENTRAMOS EN ESTA CONDICION");
+            if (turn.BlinkingTurns >= 2)
+            {
+                blinkingTurnsChange = -2;
+                actionView.TurnsConsumedMessage(0, 2, 0);
+            }
+            else if (turn.BlinkingTurns == 1)
+            {
+                fullTurnsChange = -1;
+                blinkingTurnsChange = -1;
+                actionView.TurnsConsumedMessage(1, 1, 0);
+            }
+            else if (turn.FullTurns == 1)
+            {
+                fullTurnsChange = -1;
+                actionView.TurnsConsumedMessage(1, 0, 0);
+            }
+            else
+            {
+                fullTurnsChange = -2;
+                actionView.TurnsConsumedMessage(2, 0, 0);
+            }
         }
-        //ESTO ES SOLO PARA TESTEAR LA E1
         else if (affinity == "Rp" || affinity == "Dr")
         {
-            fullTurnsChange = -turn.fullTurns; blinkingTurnsChange = -turn.blinkingTurns;
-            actionView.TurnsConsumedMessage(turn.fullTurns, turn.blinkingTurns, 0);
+            fullTurnsChange = -turn.FullTurns; blinkingTurnsChange = -turn.BlinkingTurns;
+            actionView.TurnsConsumedMessage(turn.FullTurns, turn.BlinkingTurns, 0);
         }
-        turn.fullTurns += fullTurnsChange;
-        turn.blinkingTurns += blinkingTurnsChange;
+        turn.FullTurns += fullTurnsChange;
+        turn.BlinkingTurns += blinkingTurnsChange;
     }
     public void PassTurn()
     {
-        actionView.TurnsConsumedMessage(1, 0, 0);
+        int fullTurnsChange = 0;
+        int blinkingTurnsChange = 0;
+        if (turn.BlinkingTurns > 0)
+        {
+            blinkingTurnsChange = -1;
+            actionView.TurnsConsumedMessage(0, 1, 0);
+        }
+        else
+        {
+            fullTurnsChange = -1;
+            blinkingTurnsChange = 1;
+            actionView.TurnsConsumedMessage(1, 0, 1);
+        }
+        turn.FullTurns += fullTurnsChange;
+        turn.BlinkingTurns += blinkingTurnsChange;
     }
 }

@@ -35,21 +35,25 @@ public class ActionView
     {
         actionView.WriteLine("----------------------------------------");
         actionView.WriteLine(DamageTypeMessage("Phys", attacker.name, target.name));
-        actionView.WriteLine($"{target.name} recibe {damage} de daño");
-        actionView.WriteLine(AffinityMessage(attacker, target, affinity, damage));
+        if (affinity != "-"){actionView.WriteLine(AffinityMessage(attacker, target, affinity, damage));}
+        if (damage > 0 && affinity != "Rp"){actionView.WriteLine($"{target.name} recibe {damage} de daño");}
+        if (affinity == "Rp"){actionView.WriteLine($"{attacker.name} termina con HP:{attacker.stats.CurrentHp}/{attacker.stats.HP}");}
+        else {actionView.WriteLine($"{target.name} termina con HP:{target.stats.CurrentHp}/{target.stats.HP}");}
     }
     public void ShootEffectMessage(Unit attacker, Unit target, string affinity, double damage)
     {
         actionView.WriteLine("----------------------------------------");
         actionView.WriteLine(DamageTypeMessage("Gun", attacker.name, target.name));
-        actionView.WriteLine($"{target.name} recibe {damage} de daño");
-        actionView.WriteLine(AffinityMessage(attacker, target, affinity, damage));
+        if (affinity != "-"){actionView.WriteLine(AffinityMessage(attacker, target, affinity, damage));}
+        if (damage > 0 && affinity != "Rp"){actionView.WriteLine($"{target.name} recibe {damage} de daño");}
+        if (affinity == "Rp"){actionView.WriteLine($"{attacker.name} termina con HP:{attacker.stats.CurrentHp}/{attacker.stats.HP}");}
+        else {actionView.WriteLine($"{target.name} termina con HP:{target.stats.CurrentHp}/{target.stats.HP}");}
     }
     private string AffinityMessage(Unit attacker, Unit target, string affinity, double damage)
     {
         if (affinity == "Wk"){return$"{target.name} es débil contra el ataque de {attacker.name}";}
-        if (affinity == "Rs"){return$"{target.name} es resistente contra el ataque de {attacker.name}";}
-        if (affinity == "Null"){return$"{target.name} bloquea el ataque de {attacker.name}";}
+        if (affinity == "Rs"){return$"{target.name} es resistente el ataque de {attacker.name}";}
+        if (affinity == "Nu"){return$"{target.name} bloquea el ataque de {attacker.name}";}
         if (affinity == "Rp"){return$"{target.name} devuelve {damage} daño a {attacker.name}";}
         if (affinity == "Dr"){return$"{target.name} absorbe {-damage} daño";}
         return$"{target.name} termina con HP:{target.stats.CurrentHp}/{target.stats.HP}";
@@ -88,12 +92,23 @@ public class ActionView
         int chosenSkill = int.Parse(actionView.ReadLine());
         return chosenSkill+tooExpensiveSkills;
     }
-    public void SkillEffectMessage(Unit attacker, Unit target, string affinity, int damage, Skills skill)
+    public void SkillEffectMessage(Unit attacker, Unit target, string affinity, int damage, Skills skill, int skillsUsed)
     {
         actionView.WriteLine("----------------------------------------");
+        int repetitions = GetNumberOfAttacks(skill.hits);
         actionView.WriteLine(DamageTypeMessage(skill.type, attacker.name, target.name));
-        actionView.WriteLine(AffinityMessage(attacker, target, affinity, damage));
-        actionView.WriteLine($"{target.name} recibe {damage} de daño");
+        if (affinity != "-"){actionView.WriteLine(AffinityMessage(attacker, target, affinity, damage));}
+        if (damage > 0 && affinity != "Rp"){actionView.WriteLine($"{target.name} recibe {damage} de daño");}
+        if (affinity == "Rp"){actionView.WriteLine($"{attacker.name} termina con HP:{attacker.stats.CurrentHp}/{attacker.stats.HP}");}
+        else {actionView.WriteLine($"{target.name} termina con HP:{target.stats.CurrentHp}/{target.stats.HP}");}
+    }
+    private int GetNumberOfAttacks(string skillHits, int skillsUsed)
+    {
+        var parts = skillHits.Split('-');
+        int min = int.Parse(parts[0]);
+        int max = int.Parse(parts[1]);
+        int offset = skillsUsed % (max - min + 1);
+        return min + offset;
     }
     private string DamageTypeMessage(string skillElement, string attacker, string target)
     {
@@ -101,7 +116,7 @@ public class ActionView
         if (skillElement == "Gun"){return $"{attacker} dispara a {target}";}
         if (skillElement == "Fire"){return $"{attacker} lanza fuego a {target}";}
         if (skillElement == "Ice"){return $"{attacker} lanza hielo a {target}";}
-        if (skillElement == "Elect"){return $"{attacker} lanza electricidad a {target}";}
+        if (skillElement == "Elec"){return $"{attacker} lanza electricidad a {target}";}
         return $"{attacker} lanza viento a {target}";
     }
     public int ChooseRevivalTarget(Unit unit, List<Unit> revivalTargets)
