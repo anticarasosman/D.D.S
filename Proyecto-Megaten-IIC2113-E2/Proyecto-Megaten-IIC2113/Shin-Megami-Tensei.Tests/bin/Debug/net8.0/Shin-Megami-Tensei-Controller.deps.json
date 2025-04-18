@@ -8,6 +8,7 @@
     ".NETCoreApp,Version=v8.0": {
       "Shin-Megami-Tensei-Controller/1.0.0": {
         "dependencies": {
+          "Shin-Megami-Tensei-Model": "1.0.0",
           "Shin-Megami-Tensei-View": "1.0.0"
         },
         "runtime": {

@@ -95,7 +95,8 @@ public class ActionView
     public void SkillEffectMessage(Unit attacker, Unit target, string affinity, int damage, Skills skill, int skillsUsed)
     {
         actionView.WriteLine("----------------------------------------");
-        int repetitions = GetNumberOfAttacks(skill.hits);
+        int repetitions = GetNumberOfAttacks(skill.hits, skillsUsed);
+        Console.WriteLine($"VAMOS A REPETIR EL ATAQUE {repetitions} VECES");
         actionView.WriteLine(DamageTypeMessage(skill.type, attacker.name, target.name));
         if (affinity != "-"){actionView.WriteLine(AffinityMessage(attacker, target, affinity, damage));}
         if (damage > 0 && affinity != "Rp"){actionView.WriteLine($"{target.name} recibe {damage} de daño");}
